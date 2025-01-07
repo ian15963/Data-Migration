@@ -1,6 +1,9 @@
 package com.batch.base_batch.dominio;
 
+import io.micrometer.common.util.StringUtils;
+
 import java.util.Date;
+import java.util.Objects;
 
 public class Pessoa {
 
@@ -70,5 +73,13 @@ public class Pessoa {
                 ", idade=" + idade +
                 ", dataNascimento=" + dataNascimento +
                 '}';
+    }
+
+    public boolean isValid() {
+        return StringUtils.isNotBlank(nome) &&
+                StringUtils.isNotBlank(email) &&
+                Objects.nonNull(idade) &&
+                Objects.nonNull(id) &&
+                Objects.nonNull(dataNascimento);
     }
 }

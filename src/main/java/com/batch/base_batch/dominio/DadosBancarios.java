@@ -1,5 +1,7 @@
 package com.batch.base_batch.dominio;
 
+import java.util.Objects;
+
 public class DadosBancarios {
 
     private Long id;
@@ -69,5 +71,13 @@ public class DadosBancarios {
                 ", conta=" + conta +
                 ", pessoaId=" + pessoaId +
                 '}';
+    }
+
+    public boolean isValid() {
+        return Objects.nonNull(id) &&
+                Objects.nonNull(banco) &&
+                Objects.nonNull(agencia) &&
+                Objects.nonNull(conta) &&
+                Objects.nonNull(pessoaId);
     }
 }
