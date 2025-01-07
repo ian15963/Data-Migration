@@ -5,16 +5,26 @@ public class DadosBancarios {
     private Long id;
     private Long banco;
     private Long agencia;
+    private Long conta;
     private Long pessoaId;
 
     public DadosBancarios() {
     }
 
-    public DadosBancarios(Long id, Long banco, Long agencia, Long pessoaId) {
+    public DadosBancarios(Long id, Long banco, Long agencia, Long pessoaId, Long conta) {
         this.id = id;
         this.banco = banco;
         this.agencia = agencia;
         this.pessoaId = pessoaId;
+        this.conta = conta;
+    }
+
+    public Long getConta() {
+        return conta;
+    }
+
+    public void setConta(Long conta) {
+        this.conta = conta;
     }
 
     public Long getId() {
@@ -49,12 +59,14 @@ public class DadosBancarios {
         this.pessoaId = pessoaId;
     }
 
+
     @Override
     public String toString() {
         return "DadosBancarios{" +
                 "id=" + id +
                 ", banco=" + banco +
                 ", agencia=" + agencia +
+                ", conta=" + conta +
                 ", pessoaId=" + pessoaId +
                 '}';
     }

@@ -1,4 +1,4 @@
-package com.batch.base_batch.mapper;
+package com.batch.base_batch.reader.mapper;
 
 import com.batch.base_batch.dominio.Pessoa;
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
