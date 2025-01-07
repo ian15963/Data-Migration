@@ -6,6 +6,9 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
+import org.springframework.batch.item.file.FlatFileItemWriter;
+import org.springframework.batch.item.support.ClassifierCompositeItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,11 +24,13 @@ public class DadosBancariosMigrationStep {
 
     @Bean
     public Step dadosBancariosStep(ItemReader<DadosBancarios> itemReader,
-                                   ItemWriter<DadosBancarios> itemWriter){
+                                   FlatFileItemWriter<DadosBancarios> itemWriter,
+                                   ClassifierCompositeItemWriter<DadosBancarios> classifier){
         return new StepBuilder("dadosBancariosStep", jobRepository)
-                .<DadosBancarios, DadosBancarios>chunk(1, transactionManager)
+                .<DadosBancarios, DadosBancarios>chunk(200, transactionManager)
                 .reader(itemReader)
-                .writer(itemWriter)
+                .writer(classifier)
+                .stream(itemWriter)
                 .build();
     }
 
