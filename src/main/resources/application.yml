@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    jdbcUrl: http://localhost:3306/batch
+    username: root
+    password: batch
+app:
+  datasource:
+    jdbcUrl: http://localhost:3306/batch
+    username: root
+    password: batch
